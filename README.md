@@ -1,12 +1,76 @@
 
 # Shobee
-What is shobee. Shobee is a e-commerce plateform using REST API and some security mitigation use to prevent security treats.
+The primary purpose of this project, titled **Shobee**, is to provide a custom-developed, web-based e-commerce system specifically designed for **multi-branch fashion retailers**. It aims to bridge the gap for small to medium-sized retailers who often struggle with fragmented workflows and manual inventory management.
 
+Key objectives and features of the system include:
+
+* **Centralized Management**: It empowers a single brand to manage multiple physical branches through a unified online platform. This helps store owners centralize inventory management, streamline online orders, and ensure a consistent customer experience across all locations.
+
+
+* **Operational Efficiency**: The system provides tools for administrators to coordinate operations, monitor branch-specific stock levels in real-time, and manage product listings and sales reports.
+
+
+* **Enhanced Customer Experience**: Customers can browse various fashion categories (like tops, pants, and dresses) by branch and complete purchases through a secure, user-friendly checkout process.
+
+
+* **Automation and Scalability**: Beyond a basic online store, Shobee introduces automation for tasks such as order processing, payment logging, and stock updates, while ensuring data security and system scalability.
+
+
+* **Support for Multiple Roles**: The platform supports distinct user roles, including customers (for shopping and reviews) and administrators (for oversight and inventory control).
+
+---
+The purpose of using REST APIs:
+
+### 1. Enabling Module-to-Module Communication
+
+The REST API serves as a bridge between separate modules, allowing them to exchange data and perform functions without being directly coupled.
+
+* **Cart and Order Integration**: The Cart Module uses RESTful protocols (GET, POST, DELETE) to manage items and then serves as a bridge to the finalized order records in the Order Module.
+
+
+* **Vendor and Product Integration**: The Product Module provides an API endpoint (e.g., `GET /api/products-by-vendor`) so the Vendor Module can retrieve specific product lists for a given vendor ID.
+
+
+
+### 2. Standardizing Data Exchange
+
+The documentation specifies a consistent format for every service, ensuring that the **Source Module** and **Target Module** understand the request and response.
+
+* **Protocols**: Every web service listed uses the **RESTful protocol**.
+
+
+* **Request/Response Formats**: Data is typically sent using standard parameters (like `user_id` or `product_id`) and consumed in a JSON format that includes a `success` boolean and a `data` object or `message` string.
+
+
+
+### 3. Implementing Secure CRUD Operations
+
+The REST API provides a structured way to perform Create, Read, Update, and Delete (CRUD) operations while enforcing security rules on the server side.
+
+* **Public Access**: `GET` requests (like `index` and `show`) allow the public to browse published and vendor-approved products.
+
+
+* **Authorized Mutations**: Operations that change data—such as `POST` (create), `PUT` (update), and `DELETE` (destroy)—are protected by **Sanctum authentication middleware** to ensure only authorized users or administrators can modify records.
+
+
+
+### 4. Supporting the "For Website" Logic
+
+The API endpoints are designed to filter data specifically for the end-user experience. For example, the `index` and `show` functions in the `ProductApiController` use a `forWebsite()` query scope to ensure that only products that are both published and approved by a vendor are exposed via the API.
+
+### Summary of Documented API Functions
+* **Cart Management**: Listing, adding, updating, and removing items from a user's cart.
+
+
+* **Product Management**: Retrieving all products, getting a specific product by ID, and allowing vendors or admins to create, edit, or delete listings.
+
+---
 ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 ![Stripe](https://img.shields.io/badge/Stripe-008CDD?style=for-the-badge&logo=stripe&logoColor=white)
+
 
 ---
 
