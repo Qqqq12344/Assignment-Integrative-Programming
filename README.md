@@ -24,7 +24,7 @@ The system integrates with Stripe Checkout and Stripe Webhooks to handle secure 
 
 When a payment is completed, Stripe sends webhook events to the application. These events trigger backend operations such as:
 
-- Updating the order status to Paid
+-Updating the order status to Paid
 
 -Calculating platform and payment processing fees
 
